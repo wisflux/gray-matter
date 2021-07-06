@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import {
   ChakraProvider,
   Box,
@@ -8,31 +8,26 @@ import {
   Code,
   Grid,
   theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+  Flex,
+  IconButton,
+} from "@chakra-ui/react";
+import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
+import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import { Logo } from "./Logo";
+import { Preview } from "./components/Preview";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
+    <Box fontSize="xl" width="100vw" height="100vh" flex={2} overflow="scroll">
+      <Flex flexDirection="row" p={2}>
+        <IconButton aria-label="add new screen" justifySelf="flex-start">
+          <AddIcon w={6} h={6}></AddIcon>
+        </IconButton>
+        <ColorModeSwitcher justifySelf="flex-end"></ColorModeSwitcher>
+      </Flex>
+      <Box height='full' width='full'>
+        <Preview default={{width: '1240', height: '700', x: 100, y: 100}}  url='https://dev-site1.indepreneur.io/' />
+      </Box>
     </Box>
   </ChakraProvider>
-)
+);
